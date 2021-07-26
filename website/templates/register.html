@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+<title>{% block title %}SIGN UP{% endblock %}</title>
+
+{% block content %}
+{# https://www.youtube.com/watch?v=x2bgtETJXAw #}
+<div class="container">
+    <div class="row content">
+        <div class="col-md-6 mb-3">
+            <img src="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=80"
+                class="img-fluid" alt="">
+        </div>
+        <div class="col-md-6 align-self-center">
+            <h3 class="signin-text mb-3">JOIN US</h3>
+            <form method="POST">
+                {# "email" must be in the following order: characters@characters.domain (characters followed by an @ sign, followed by more characters, and then a "." After the "." sign, add at least 2 letters from a to z: #}
+                <div class="form-group mb-3">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" class="form-control">
+                </div>
+
+                {# "username" must have at least 5 characters and a max of 20 #}
+                <div class="form-group mb-3">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username" class="form-control">
+                </div>
+
+                {# "password" must contain 8 or more characters that are of at least one number, and one uppercase and lowercase letter #}
+                <div class="form-group mb-3">
+                    <label for="password1">Password</label>
+                    <input type="password" name="password1" id="password1" class="form-control">
+                </div>
+
+                {# "password" must contain 8 or more characters that are of at least one number, and one uppercase and lowercase letter: #}
+                <div class="form-group mb-3">
+                    <label for="password2">Password (Confirm)</label>
+                    <input type="password" name="password2" id="password2" class="form-control">
+                </div>
+
+                <div class="d-grid gap-2">
+                    <button class="btn btn-class">Join</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
