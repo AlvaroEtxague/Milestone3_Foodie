@@ -109,5 +109,4 @@ def register():
             # redirect user to profile page
             return redirect(url_for("views.profile", username=session["user"]))
             
-            
     return render_template('register.html')
