@@ -31,7 +31,6 @@ def login():
             if check_password_hash(existing_user["password1"], password):
                 username = existing_user["username"]
                 session["user"] = username
-                print(username)
                 # flash("Welcome, {}".format(username))
                 return redirect(url_for("views.profile", username=session["user"]))
             else:
