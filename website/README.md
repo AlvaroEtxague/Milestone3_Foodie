@@ -1,1 +1,172 @@
-# Milestone3_Foodie
+# Foodies App
+A web project using HTML, CSS, JS, Bootstrap, Python, Flask Framework + MongoDB
+
+## Strategy
+
+### About:
+- The Foodies App is an online cookbook where users can create an account and share their favourite recipes with other users.
+
+### Wireframes
+
+## Architecture details & Functional Specification:
+
+### Navbar:
+- A Navbar with a burger style menu, a logo and a the following pages displayed for unregistered users: Home, Login, Register.
+- Desktop:
+
+- Mobile:
+
+### Home Page:
+This page will display all recipes in a blog style.
+- Desktop:
+
+- Mobile:
+
+### Searching for a recipe:
+- When the user enters a keyword and presses enter then a list of recipes with the searched term will be displayed.
+- Desktop:
+
+- Mobile:
+
+- If there are no results then the page will display a flashing message indicating that No results were found.
+- Desktop:
+
+- Mobile:
+
+### Individual recipe page:
+- This page will display the full recipe with an image, Title, preparation time and recipe description.
+- Desktop:
+
+- Mobile:
+
+### Main Pages/HTML:
+Pages are organized as follows:
+- Home: templates\home.html
+- Login: templates\login.html
+- Register: templates\register.html
+- Logout: templates\logout.html
+- Add Post: templates\add_post.html
+- Update Post: templates\update_post.html
+- User Profile: templates\profile.html
+- Post: templates\post.html
+- Base: templates\base.html
+
+The core html elements are injected through different functions via the .py files.
+
+### Styles/CSS:
+Styles are organized under the "static\css\" directory:
+- style.css: contains all styles
+
+### Python:
+Py Files are organized under the core directory::
+- app.py: runs the app
+- auth.py: contains the views for Login, Logout and Register pages
+- mongo.py: contains all mongo db related functions
+- views.py: contains the views for
+
+## Scope
+### User Stories:
+
+- As a user I want to:
+  1. be able to navigate through the website content with fluidity
+  2. be able to register and create an account
+  3. be able to search for recipes by using a keyword
+  
+- As a registered user I want to:
+  1. be able to login using my credentials
+  2. be able to create my own recipes
+  3. be able to update my own recipes
+  4. be able to delete my own recipes
+
+### Design Choices:
+
+- I wanted to present a neat, minimalist approach in this page.
+
+- The website should be fully responsive and follow a "mobile first" approach.
+
+- The colors palette include the following colors:
+    - primary color: #00ac96;
+	- secondary color: #34495e;
+	- light color: #fff;
+    - red color for errors: #ee5253 
+    - green color for links and happy interactions: #1abc9c
+    - orange color for warnings: #e58e26
+
+- Fonts used: Google Fonts - Raleway family
+
+
+## Testing
+
+- All existing features have been tested on the following: Android, iPhone, iPad, iPad Pro and PC.
+- The following Test Plan was executed and all scenarios passed:
+
+#### Pages and Links
+Scenario | Test Result | Comments
+:-----|:-----|:-----
+Verify that the User can navigate to the Home Page.|Passed|N/A
+Verify that the User can navigate to the Login Page.|Passed|N/A
+Verify that the User can navigate to the Register Page.|Passed|N/A
+Verify that the User can navigate to the Profile Page.|Passed|N/A
+Verify that the User can navigate to the New Post Page.|Passed|N/A
+Verify that when clicking the Foodie logo the user will be redirected to the Home Page.|Passed|N/A
+
+#### Search bar
+Scenario | Test Result | Comments
+:-----|:-----|:-----
+Using the search bar, enter a keyword, ie: "chicken" and verify that the page will display search results related to our search.|Passed|N/A
+Using the search bar, enter a invalid keyword that will trigger no results, ie: asd!@#!@#252 and verify that the page will display a flashing error message.|Passed|N/A
+
+#### Profile view
+Scenario | Test Result | Comments
+:-----|:-----|:-----
+Verify that if the API doesn't return an image then the default image is displayed instead.|Passed|N/A
+
+#### Creating a new recipe
+Scenario | Test Result | Comments
+:-----|:-----|:-----
+Verify that the user can create a new recipe|Passed|N/A
+Verify that the following fields will be present: Title, description, preparation time, image url.|Passed|N/A
+Verify that all fields are mandatory|Passed|N/A
+
+#### Updating a new recipe
+Scenario | Test Result | Comments
+:-----|:-----|:-----
+Verify that the user can update a recipe|Passed|N/A
+Verify that an updated recipe is displayed with all changes in the Profile page|Passed|N/A
+Verify that an updated recipe is displayed with all changes in the Home page|Passed|N/A
+
+#### Deleting a recipe
+Scenario | Test Result | Comments
+:-----|:-----|:-----
+Verify that the user can delete a recipe|Passed|N/A
+Verify that a deleted recipe is not displayed in the Profile page|Passed|N/A
+Verify that a deleted recipe is not displayed in the Home page|Passed|N/A
+
+
+## Deployment
+
+### Deployment on Heroku
+
+
+
+### Local Deployment using Git
+
+Steps on Github:
+
+- Go to https://github.com/zippote/moviesBrewApp
+- Click Code
+- Select HTTPS and copy the following url https://github.com/zippote/moviesBrewApp.git
+
+Steps on your local:
+
+- Create a destination folder in your local >> ie: myFolderExample in the C drive
+- Open the cmd and move to that folder >> cd C:\myFolderExample
+- Type the following command: git clone https://github.com/zippote/moviesBrewApp.git
+- Hit enter and wait until the process is completed
+- Open the project using your favourite IDE
+
+## Credits
+- Media
+  - Images were taken from Unplash.com and are royalty free images.
+- Recipes content was taken form BBC recipes
+  - https://www.bbcgoodfood.com/recipes
