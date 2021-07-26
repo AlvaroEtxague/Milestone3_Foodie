@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block meta %}
+<meta name=viewport content="width=device-width, initial-scale=1.0">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="card card-content">
+        <div class="card-body">
+            <img src={{post.image_url}} alt="{{post.post_title}}" class="align-middle">
+            <div class="card-home">
+                <h5 class="card-title text-capitalize fw-bold mt-3">{{post.post_title}}</h5>
+                <h6 class="card-title text-capitalize fw-bold my-3"><i class="far fa-clock"></i> Prep Time:
+                    {{post.prep_time}} minutes</h6>
+                <p style="white-space: pre-wrap;" class="card-text mb-3">{{post.post_description}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock  %}
