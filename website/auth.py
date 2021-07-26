@@ -107,6 +107,6 @@ def register():
             flash("Account created!", category='success')
             
             # redirect user to profile page
-            return redirect(url_for("views.profile", username=session["user"]))
+            return redirect(url_for("auth.login"))
             
     return render_template('register.html')

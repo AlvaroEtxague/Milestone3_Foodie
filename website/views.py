@@ -27,7 +27,11 @@ def profile(username):
     posts = posts_collection.find({"user_id": username})   
 
     if session["user"]:
-        return render_template("profile.html", username=username, posts=posts)
+        if posts.count() > 0 :
+            return render_template("profile.html", username=username, posts=posts)
+        else:
+            flash("You don't have any recipes yet. Let's create one!", category='success')
+            return render_template("profile.html", username=username, posts=posts)
     
     return redirect(url_for("login"))
 
