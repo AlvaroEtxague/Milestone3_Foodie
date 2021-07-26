@@ -10,28 +10,26 @@ A web project using HTML, CSS, JS, Bootstrap, Python, Flask Framework + MongoDB
 
 ## Architecture details & Functional Specification:
 
-### Navbar:
+### Navbar and Home Page:
 - A Navbar with a burger style menu, a logo and a the following pages displayed for unregistered users: Home, Login, Register.
+- The Home page will display all recipes in a blog style.
 - Desktop:
 
+	<img src="static\img\wireframes\desktop\homePage001.JPG" style="height: 500px; width:1000px;"/>
+	
 - Mobile:
 
-### Home Page:
-This page will display all recipes in a blog style.
-- Desktop:
-
-- Mobile:
-
+	<img src="static\img\wireframes\mobile\mobileHomePage001.JPG" style="height: 500px; width:1000px;"/>
+	
 ### Searching for a recipe:
 - When the user enters a keyword and presses enter then a list of recipes with the searched term will be displayed.
-- Desktop:
-
-- Mobile:
-
 - If there are no results then the page will display a flashing message indicating that No results were found.
 - Desktop:
 
+	<img src="static\img\wireframes\desktop\noResults.JPG" style="height: 500px; width:1000px;"/>
 - Mobile:
+
+	<img src="static\img\wireframes\mobile\mobileNoResults.JPG" style="height: 500px; width:1000px;"/>
 
 ### Individual recipe page:
 - This page will display the full recipe with an image, Title, preparation time and recipe description.
