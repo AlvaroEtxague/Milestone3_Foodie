@@ -102,6 +102,26 @@ Py Files are organized under the core directory::
 - mongo.py: contains all mongo db related functions
 - views.py: contains the views for
 
+### MongoDB structure
+
+#### Database name: m3_db
+
+#### Collections:
+- users:
+	- _id
+	- email
+	- username
+	- password1
+	- password2
+
+- posts:
+	- _id
+	- post_title
+	- post_description
+	- user_id
+	- image_url
+	- prep_time
+
 ## Scope
 ### User Stories:
 
