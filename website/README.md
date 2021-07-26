@@ -37,6 +37,42 @@ A web project using HTML, CSS, JS, Bootstrap, Python, Flask Framework + MongoDB
 
 - Mobile:
 
+### Login page:
+- Desktop:
+
+	<img src="static\img\wireframes\desktop\loginPage001.JPG" style="height: 500px; width:1000px;"/>
+- Mobile:
+
+	<img src="static\img\wireframes\mobile\mobileLoginPage001.JPG" style="height: 500px; width:1000px;"/>
+
+### Logout page:
+
+- Desktop:
+
+	<img src="static\img\wireframes\desktop\logout001.JPG" style="height: 500px; width:1000px;"/>
+- Mobile:
+
+	<img src="static\img\wireframes\mobile\mobileLogout001.JPG" style="height: 500px; width:1000px;"/>
+
+### Register page:
+- Desktop:
+
+	<img src="static\img\wireframes\desktop\registerPage001.JPG" style="height: 500px; width:1000px;"/>
+- Mobile:
+
+	<img src="static\img\wireframes\mobile\mobileRegisterPage001.JPG" style="height: 500px; width:1000px;"/>
+
+### Profile page:
+- Desktop:
+
+	<img src="static\img\wireframes\desktop\profilePage001.JPG" style="height: 500px; width:1000px;"/>
+
+- Mobile:
+
+	<img src="static\img\wireframes\mobile\mobileProfilePage001.JPG" style="height: 500px; width:1000px;"/>
+
+	<img src="static\img\wireframes\mobile\mobileProfilePage002.JPG" style="height: 500px; width:1000px;"/>
+
 ### Main Pages/HTML:
 Pages are organized as follows:
 - Home: templates\home.html
