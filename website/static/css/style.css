@@ -299,6 +299,11 @@ button.search-btn {
 }
 
 @media only screen and (max-width: 420px) {
+    .content {
+        margin: 2% auto;
+        padding: 0;
+    }
+
     .row .column {
         flex: 100%;
     }
