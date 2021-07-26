@@ -88,9 +88,9 @@ def register():
             # validate that passwords match
             flash("Passwords don't match.", category='error')
             
-        elif len(password1) < 1: #revert this back to 8 after testing
+        elif len(password1) < 8:
             # validate password length
-            flash("Password must contain 8 or more characters that are of at least one number, and one uppercase and lowercase letter", category='error')   
+            flash("Password must contain 8 or more characters.", category='error')   
             
         else:
             # add user to db            
