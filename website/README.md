@@ -35,7 +35,11 @@ A web project using HTML, CSS, JS, Bootstrap, Python, Flask Framework + MongoDB
 - This page will display the full recipe with an image, Title, preparation time and recipe description.
 - Desktop:
 
+	<img src="static\img\wireframes\desktop\individualRecipe.JPG" style="height: 500px; width:1000px;"/>
 - Mobile:
+
+	<img src="static\img\wireframes\mobile\mobileIndividualRecipe.JPG" style="height: 500px; width:1000px;"/>
+
 
 ### Login page:
 - Desktop:
