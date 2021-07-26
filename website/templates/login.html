@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+<title>{% block title %}LOGIN{% endblock %}</title>
+
+{% block content %}
+<div class="container">
+    <div class="row content">
+        <div class="col-md-6 mb-3">
+            <img src="https://images.unsplash.com/photo-1490818387583-1baba5e638af?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fGZvb2R8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
+                class="img-fluid" alt="">
+        </div>
+        <div class="col-md-6 align-self-center">
+            <h3 class="signin-text mb-3">WELCOME</h3>
+            <form method="POST">
+                <div class="form-group mb-3">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" class="form-control">
+                </div>
+                <div class="form-group mb-3">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" class="form-control">
+                </div>
+                <div class="d-grid gap-2">
+                    <button class="btn btn-class">Login</button>
+                    <p class="small-text">Don't have an account? <span><a href="{{ url_for('auth.register') }}">
+                                Create One</a></span></p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
