@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block meta %}
+<meta name=viewport content="width=device-width, initial-scale=1.0">
+{% endblock %}
+
+{% block content %}
+
+<!-- FORM FOR SEARCH BAR -->
+<form class="search-section d-flex justify-content-center" method="post" action="{{url_for('views.search')}}">
+    <div class="search-box my-4">
+        <input class="search-text" type="text" name="query" id="query" minlength="3" placeholder="Search recipes">
+        <button type="submit" class="search-btn"><i class="fas fa-search"></i></button>
+    </div>
+</form>
+
+<div class="container">
+    {% for post in posts %}
+    <div class="card card-content mt-3">
+        <div class="card-body">
+            <img src={{post.image_url}} alt="{{post.post_title}}">
+            <div class="card-home">
+                <h5 class="card-title text-capitalize fw-bold mt-3">{{post.post_title}}</h5>
+                <h6 class="card-title text-capitalize fw-bold my-3"><i class="far fa-clock"></i> Prep Time:
+                    {{post.prep_time}} minutes</h6>
+                <p class="card-text mt-3">{{post.post_description | truncate(150) }}</p>
+                <a href="{{ url_for('views.post', username=post.user_id, post_id=post._id)}}"
+                    class="btn btn-primary">Read
+                    more...</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock  %}
