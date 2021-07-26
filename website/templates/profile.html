@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+<title>{% block title %}PROFILE{% endblock %}</title>
+
+{% block content %}
+<div class="container profile-welcome-content">
+    <div class="row">
+        <div class="col-12 user-welcome-col">
+            <div class="user-welcome">
+                <h3 class="text-center">Welcome {{ username.title() }}</h3>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    {% for post in posts %}
+    <div class="card card-content mb-3">
+        <div class="card-body">
+            <img src={{post.image_url}} alt="{{post.post_title}}">
+            <div class="card-home">
+                <h5 class="card-title text-capitalize fw-bold mt-3">{{post.post_title}}</h5>
+                <h6 class="card-title text-capitalize fw-bold my-3"><i class="far fa-clock"></i> Prep Time:
+                    {{post.prep_time}} minutes</h6>
+                <p class="card-text mt-3">{{post.post_description | truncate(300) }}</p>
+            </div>
+            <div class="row mb-3">
+                <div class="col d-flex justify-content-center">
+                    <a href="{{ url_for('views.post', username=post.user_id, post_id=post._id)}}"
+                        class="btn btn-primary mx-1">View</a>
+
+                    <a href="{{ url_for('views.edit_post', post_id=post._id) }}" class="btn btn-warning mx-1">Update</a>
+
+                    <a href="{{ url_for('views.delete_post', post_id=post._id) }}"
+                        class="btn btn-danger mx-1">Delete</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
