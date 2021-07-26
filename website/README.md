@@ -182,6 +182,8 @@ Verify that a deleted recipe is not displayed in the Home page|Passed|N/A
 
 
 ## Deployment
+### App deployed to Heroku
+- https://foodie-ci-m3.herokuapp.com/
 
 ### Local Deployment using Git
 
