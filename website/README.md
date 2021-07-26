@@ -183,23 +183,19 @@ Verify that a deleted recipe is not displayed in the Home page|Passed|N/A
 
 ## Deployment
 
-### Deployment on Heroku
-
-
-
 ### Local Deployment using Git
 
 Steps on Github:
 
-- Go to https://github.com/zippote/moviesBrewApp
+- Go to https://github.com/zippote/Milestone3_Foodie
 - Click Code
-- Select HTTPS and copy the following url https://github.com/zippote/moviesBrewApp.git
+- Select HTTPS and copy the following url https://github.com/zippote/Milestone3_Foodie.git
 
 Steps on your local:
 
 - Create a destination folder in your local >> ie: myFolderExample in the C drive
 - Open the cmd and move to that folder >> cd C:\myFolderExample
-- Type the following command: git clone https://github.com/zippote/moviesBrewApp.git
+- Type the following command: git clone https://github.com/zippote/Milestone3_Foodie.git
 - Hit enter and wait until the process is completed
 - Open the project using your favourite IDE
 
