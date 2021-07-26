@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+<title>{% block title %}UPDATE SOMETHING{% endblock %}</title>
+
+{% block content %}
+<section class="container mt-3">
+    <form class="edit_post g-0" method="POST" action="{{ url_for('views.edit_post', post_id=post._id) }}">
+        <div class="row mb-3 g-0 post_input_row">
+            <div class="col-md-5 g-0">
+                <label for="post-title" class="col-md-5 col-form-label">Title</label>
+                <input value="{{ post.post_title }}" type="text" class="form-control post-title" name="post-title"
+                    id="post-title">
+            </div>
+        </div>
+
+        <div class="row mb-3 g-0 post_input_row">
+            <div class="col-md-5 g-0">
+                <label for="description" class="col-md-5 col-form-label">Description</label>
+                <textarea class="form-control text-area" name="description" id="description" cols="30"
+                    rows="20">{{ post.post_description }}</textarea>
+            </div>
+        </div>
+
+        <div class="row mb-3 g-0 post_input_row">
+            <div class="col-md-5 g-0">
+                <label for="prep-time" class="col-md-5 col-form-label">Preparation Time:</label>
+                <input type="number" min="0" max="60" step="5" class="form-control image-url" name="prep-time"
+                    id="prep-time" value="{{ post.prep_time }}">
+            </div>
+        </div>
+
+        <div class="row mb-3 g-0 post_input_row">
+            <div class="col-md-5 g-0">
+                <label for="image-url" class="col-md-5 col-form-label">Image URL</label>
+                <input value="{{ post.image_url }}" type="text" class="form-control image-url" name="image-url"
+                    id="image-url">
+            </div>
+        </div>
+
+        <div class="row post_input_row">
+            <div class="col-3 d-flex justify-content-center">
+                <a href="{{ url_for('views.profile', username=session['user']) }}"
+                    class="btn btn-secondary my-3">Cancel</a>
+            </div>
+            <div class="col-3 d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary my-3">Update</button>
+            </div>
+        </div>
+    </form>
+</section>
+{% endblock %}
