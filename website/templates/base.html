@@ -23,6 +23,10 @@
         <!-- MY STYLES -->
         <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css" />
 
+        <!--Stack overflow solution to favicon console error:
+        https://stackoverflow.com/questions/31075893/im-getting-favicon-ico-error -->
+        <link rel="shortcut icon" href="#">
+
         <title>{% block title %}HOME{% endblock %}</title>
     </head>
 
