@@ -3,7 +3,6 @@
 
     <head>
         <!-- Required meta tags -->
-        {% block meta %}{% endblock %}
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -23,7 +22,7 @@
         <!-- MY STYLES -->
         <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css" />
 
-        <!--Stack overflow solution to favicon console error:
+        <!-- Stack overflow solution to favicon console error:
         https://stackoverflow.com/questions/31075893/im-getting-favicon-ico-error -->
         <link rel="shortcut icon" href="#">
 
@@ -48,7 +47,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" aria-current="page" href="{{ url_for('views.home') }}">Home</a>
                             </li>
-                            {# if the user is logged in #}
+                            <!-- if the user is logged in -->
                             {% if session.user %}
                             <li class="nav-item">
                                 <a class="nav-link"
@@ -79,7 +78,7 @@
         {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
         {% for category, message in messages %}
-        {# if the category == error then display error message #}
+        <!-- if the category == error then display error message -->
         {% if category == 'error' %}
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
             {{ message }}
@@ -87,7 +86,7 @@
                 <span aria-hidden="true"></span>
             </button>
         </div>
-        {# if the category != error then display success message #}
+        <!-- if the category != error then display success message -->
         {% else %}
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             {{ message }}
