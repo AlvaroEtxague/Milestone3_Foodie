@@ -202,7 +202,27 @@ Verify that a deleted recipe is not displayed in the Home page|Passed|N/A
 
 
 ## Deployment
-### App deployed to Heroku
+### App deployment to Heroku
+
+- Create a requirements.txt file using the terminal command pip freeze > requirements.txt
+- Create a Procfile with the terminal command echo web: python app.py > Procfile
+- git add and git commit the new requirements and Procfile and then git push the project to Github.
+- Create a new app on the Heroku website by clicking the "New" button in the dashboard. Give it a name and set the region to Europe.
+- From the Heroku dashboard of your newly created application, click on "Deploy" > "Deployment method" and select Github.
+- Confirm the linking of the Heroku app to the correct Github repository.
+- In the Heroku dashboard for the application, click on "Settings" > "Reveal Config Vars".
+- Set the following config vars and save all changes:
+KEY | VALUE
+:-----|:-----
+IP | 0.0.0.0
+MONGO_DBNAME | <your mongo db name here>
+MONGO_URI | <your mongo db URI here>
+PORT | 5000
+SECRET_KEY | <your secret key here>
+COLLECTION_POSTS | posts
+COLLECTION_USERS | users
+
+- The website should be live and a url will be provided to access it.
 - https://foodie-ci-m3.herokuapp.com/
 
 ### Local Deployment using Git
