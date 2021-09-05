@@ -214,13 +214,13 @@ Verify that a deleted recipe is not displayed in the Home page|Passed|N/A
 - Set the following config vars and save all changes:
 KEY | VALUE
 :-----|:-----
-IP | 0.0.0.0
-MONGO_DBNAME | <your mongo db name here>
-MONGO_URI | <your mongo db URI here>
-PORT | 5000
-SECRET_KEY | <your secret key here>
-COLLECTION_POSTS | posts
-COLLECTION_USERS | users
+IP|0.0.0.0
+MONGO_DBNAME|<your mongo db name here>
+MONGO_URI|<your mongo db URI here>
+PORT|5000
+SECRET_KEY|<your secret key here>
+COLLECTION_POSTS|posts
+COLLECTION_USERS|users
 
 - The website should be live and a url will be provided to access it.
 - https://foodie-ci-m3.herokuapp.com/
