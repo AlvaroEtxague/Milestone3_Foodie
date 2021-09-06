@@ -212,15 +212,17 @@ Verify that a deleted recipe is not displayed in the Home page|Passed|N/A
 - Confirm the linking of the Heroku app to the correct Github repository.
 - In the Heroku dashboard for the application, click on "Settings" > "Reveal Config Vars".
 - Set the following config vars and save all changes:
-KEY | VALUE
-:-----|:-----
+
+#### Config Vars
+Key | Value | Comments
+:-----|:-----|:-----
 IP|0.0.0.0
-MONGO_DBNAME|<your mongo db name here>
-MONGO_URI|<your mongo db URI here>
-PORT|5000
-SECRET_KEY|<your secret key here>
-COLLECTION_POSTS|posts
-COLLECTION_USERS|users
+MONGO_DBNAME|`your mongo db name here`|N/A
+MONGO_URI|`your mongo db URI here`|N/A
+PORT|5000|N/A
+SECRET_KEY|`your secret key here`|N/A
+COLLECTION_POSTS|posts|N/A
+COLLECTION_USERS|users|N/A
 
 - The website should be live and a url will be provided to access it.
 - https://foodie-ci-m3.herokuapp.com/
