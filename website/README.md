@@ -177,7 +177,7 @@ Using the search bar, enter a invalid keyword that will trigger no results, ie: 
 #### Profile view
 Scenario | Test Result | Comments
 :-----|:-----|:-----
-Verify that if the API doesn't return an image then the default image is displayed instead.|Passed|N/A
+Verify that when a logged user opens the profile page this will display their own recipes with the options to view, update and delete them.|Passed|N/A
 
 #### Creating a new recipe
 Scenario | Test Result | Comments
