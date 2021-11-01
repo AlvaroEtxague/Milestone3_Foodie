@@ -2,10 +2,11 @@ import os
 from flask import Blueprint
 from flask_pymongo import PyMongo
 from flask_pymongo.wrappers import MongoClient
+
 if os.path.exists("env.py"):
     import env
 
-mongo = Blueprint('mongo', __name__)
+mongo = Blueprint("mongo", __name__)
 
 # mapping the mongo cluster from env.py
 CLUSTER = os.environ.get("MONGO_URI")
@@ -14,8 +15,12 @@ CLUSTER = os.environ.get("MONGO_URI")
 DB = os.environ.get("MONGO_DBNAME")
 
 # mapping the collections from env.py
-COLLECTION_USERS = os.environ.get("COLLECTION_USERS")
-COLLECTION_POSTS = os.environ.get("COLLECTION_POSTS")
+# COLLECTION_USERS = os.environ.get("COLLECTION_USERS")
+# COLLECTION_POSTS = os.environ.get("COLLECTION_POSTS")
+COLLECTION_USERS = "users"
+COLLECTION_POSTS = "posts"
+COLLECTION_RATINGS = "ratings"
+COLLECTION_FAVOURITE = "favourite"
 
 
 # function to check db connection
