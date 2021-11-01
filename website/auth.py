@@ -1,12 +1,20 @@
 import os
 from flask import (
-    Blueprint, render_template, request, flash, redirect, url_for, session)
+    Blueprint,
+    render_template,
+    request,
+    flash,
+    redirect,
+    url_for,
+    session,
+)
 from mongo import CLUSTER, mongo_connect, DB, COLLECTION_USERS
 from werkzeug.security import generate_password_hash, check_password_hash
+
 if os.path.exists("env.py"):
     import env
 
-auth = Blueprint('auth', __name__)
+auth = Blueprint("auth", __name__)
 
 # mapping the db
 db_connection = mongo_connect(CLUSTER)
@@ -16,15 +24,15 @@ users_collection = db_connection[DB][COLLECTION_USERS]
 users = users_collection.find()
 
 
-@auth.route('/login', methods=['GET', 'POST'])
+@auth.route("/login", methods=["GET", "POST"])
 def login():
-    if request.method == 'POST':
+    if request.method == "POST":
         # get email and check if already exists in db
-        email = request.form.get('email').lower()
+        email = request.form.get("email").lower()
         existing_user = users_collection.find_one({"email": email})
 
         # get the password entered
-        password = request.form.get('password')
+        password = request.form.get("password")
 
         # verify hashed password
         if existing_user:
@@ -34,23 +42,26 @@ def login():
                 session["user"] = username
                 # flash("Welcome, {}".format(username))
                 return redirect(
-                    url_for("views.profile", username=session["user"]))
+                    url_for("views.profile", username=session["user"])
+                )
             else:
                 # invalid password match
                 flash(
-                    "Incorrect username or password. "
-                    "Please try again.", category='error')
+                    "Incorrect username or password. " "Please try again.",
+                    category="error",
+                )
                 return redirect(url_for("auth.login"))
         else:
             # username doesn't exist
             flash(
-                "Incorrect username or password. "
-                "Please try again.", category='error')
+                "Incorrect username or password. Please try again.",
+                category="error",
+            )
             return redirect(url_for("auth.login"))
-    return render_template('login.html')
+    return render_template("login.html")
 
 
-@auth.route('/logout')
+@auth.route("/logout")
 def logout():
     # remove user from session cookies
     flash("You have been logged out")
@@ -58,13 +69,13 @@ def logout():
     return redirect(url_for("auth.login"))
 
 
-@auth.route('/register', methods=['GET', 'POST'])
+@auth.route("/register", methods=["GET", "POST"])
 def register():
-    if request.method == 'POST':
-        email = request.form.get('email').lower()
-        username = request.form.get('username').lower()
-        password1 = request.form.get('password1')
-        password2 = request.form.get('password2')
+    if request.method == "POST":
+        email = request.form.get("email").lower()
+        username = request.form.get("username").lower()
+        password1 = request.form.get("password1")
+        password2 = request.form.get("password2")
 
         # validations
         existing_user = users_collection.find_one({"username": username})
@@ -72,35 +83,37 @@ def register():
 
         # check if username already exists in db
         if existing_user:
-            flash("Username already exists.", category='error')
+            flash("Username already exists.", category="error")
             return redirect(url_for("auth.register"))
 
         # check if email already registered
         elif existing_email:
             flash(
-                "This email is already registered. "
-                "Please login.", category='error')
+                "This email is already registered. " "Please login.",
+                category="error",
+            )
             return redirect(url_for("auth.login"))
 
         elif len(email) < 4:
             # validate email
-            flash("Please enter a valid email.", category='error')
+            flash("Please enter a valid email.", category="error")
 
         elif len(username) < 5 or len(username) > 20:
             # validate username
             flash(
                 "Username must be between 5 and 20 characters.",
-                category='error')
+                category="error",
+            )
 
         elif password1 != password2:
             # validate that passwords match
-            flash("Passwords don't match.", category='error')
+            flash("Passwords don't match.", category="error")
 
         elif len(password1) < 8:
             # validate password length
             flash(
-                "Password must contain 8 or more characters.",
-                category='error')
+                "Password must contain 8 or more characters.", category="error"
+            )
 
         else:
             # add user to db
@@ -109,12 +122,12 @@ def register():
                 "email": email,
                 "username": username,
                 "password1": generate_password_hash(password1),
-                "password2": generate_password_hash(password2)
+                "password2": generate_password_hash(password2),
             }
             users_collection.insert_one(new_user)
             # success alert
-            flash("Account created!", category='success')
+            flash("Account created!", category="success")
 
             # redirect user to profile page
             return redirect(url_for("auth.login"))
-    return render_template('register.html')
+    return render_template("register.html")
