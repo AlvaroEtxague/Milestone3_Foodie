@@ -34,7 +34,9 @@
                 <label for="image-url" class="col-md-5 col-form-label">Image URL</label>
                 <input value="{{ post.image_url }}" type="text" class="form-control image-url" name="image-url"
                     id="image-url">
-            </div>
+            </div>  
+
+            <input type="hidden" name="rating" value="{{post.rating}}">
         </div>
 
         <div class="row post_input_row">
@@ -42,6 +44,8 @@
                 <a href="{{ url_for('views.profile', username=session['user']) }}"
                     class="btn btn-secondary my-3">Cancel</a>
             </div>
+
+
             <div class="col-3 d-flex justify-content-center">
                 <button type="submit" class="btn btn-primary my-3">Update</button>
             </div>
