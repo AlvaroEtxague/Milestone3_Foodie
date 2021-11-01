@@ -1,7 +1,5 @@
 {% extends "base.html" %}
-
 <title>{% block title %}LOGIN{% endblock %}</title>
-
 {% block content %}
 <div class="container">
     <div class="row content">
@@ -13,17 +11,18 @@
             <h3 class="signin-text mb-3">WELCOME</h3>
             <form method="POST">
                 <div class="form-group mb-3">
-                    <label for="email">Email</label>
-                    <input type="email" name="email" id="email" class="form-control">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" class="form-control">
                 </div>
                 <div class="form-group mb-3">
-                    <label for="password">Password</label>
-                    <input type="password" name="password" id="password" class="form-control">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" class="form-control">
                 </div>
                 <div class="d-grid gap-2">
-                    <button class="btn btn-class">Login</button>
-                    <p class="small-text">Don't have an account? <span><a href="{{ url_for('auth.register') }}">
-                                Create One</a></span></p>
+                <button class="btn btn-class">Login</button>
+                <p class="small-text">Don't have an account? <span><a href="{{ url_for('auth.register') }}">
+                    Create One</a></span>
+                </p>
                 </div>
             </form>
         </div>

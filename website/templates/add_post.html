@@ -1,47 +1,33 @@
-{% extends "base.html" %}
-
-<title>{% block title %}Add Post{% endblock %}</title>
-
-{% block content %}
-<section class="container mt-3">
+{% extends "base.html" %} <title>{% block title %}Add Post{% endblock %}</title> {% block content %} <section class="container mt-3">
     <form class="add_post g-0" method="POST">
         <div class="row mb-3 g-0 post_input_row">
             <div class="col-md-5 g-0">
                 <label for="post-title" class="col-md-5 col-form-label">Post Title:</label>
-                <input type="text" class="form-control post-title" name="post-title" id="post-title"
-                    placeholder="Enter your post title here..." required>
+                <input type="text" class="form-control post-title" name="post-title" id="post-title" placeholder="Enter your post title here..." required>
             </div>
         </div>
-
         <div class="row mb-3 g-0 post_input_row">
             <div class="col-md-5 g-0">
                 <label for="description" class="col-md-5 col-form-label">Description:</label>
-                <textarea class="form-control text-area" name="description" id="description" cols="30" rows="10"
-                    placeholder="Write something here..." required></textarea>
+                <textarea class="form-control text-area" name="description" id="description" cols="30" rows="10" placeholder="Write something here..." required></textarea>
             </div>
         </div>
-
         <div class="row mb-3 g-0 post_input_row">
             <div class="col-md-5 g-0">
                 <label for="prep-time" class="col-md-5 col-form-label">Preparation Time:</label>
-                <input type="number" min="0" max="60" step="5" class="form-control image-url" name="prep-time"
-                    id="prep-time" value="0" required>
+                <input type="number" min="0" max="60" step="5" class="form-control image-url" name="prep-time" id="prep-time" value="0" required>
             </div>
         </div>
-
         <div class="row mb-3 g-0 post_input_row">
             <div class="col-md-5 g-0">
                 <label for="image-url" class="col-md-5 col-form-label">Image URL</label>
-                <input type="text" class="form-control image-url" name="image-url" id="image-url"
-                    placeholder="Enter your image url here..." required>
+                <input type="text" class="form-control image-url" name="image-url" id="image-url" placeholder="Enter your image url here..." required>
             </div>
         </div>
-
         <div class="row mb-3 g-0 post_input_row">
             <div class="d-grid gap-2 col-3 mx-auto">
                 <button type="submit" class="btn btn-primary">Add</button>
             </div>
         </div>
     </form>
-</section>
-{% endblock %}
+</section> {% endblock %}

@@ -278,6 +278,12 @@ button.search-btn {
     flex-grow: unset;
 }
 
+.post-card-img-top{
+    width: 100%;
+    height: 25vw;
+    object-fit: cover;
+}
+
 
 @media only screen and (max-width: 800px) {
     .row .column {
