@@ -1,102 +1,74 @@
-{% extends "base.html" %}
-
-{% block meta %}
+{% extends "base.html" %} {% block meta %}
 <meta name=viewport content="width=device-width, initial-scale=1.0">
-{% endblock %}
-
-{% block content %}
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <link rel="stylesheet" href={{url_for("static",filename="css/fav_ratings.css")}}>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+{% endblock %} {% block content %}
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="stylesheet" href={{url_for( "static",filename="css/fav_ratings.css" )}}>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <!-- FORM FOR SEARCH BAR -->
 <form class="search-section d-flex justify-content-center" method="post" action="{{url_for('views.search')}}">
     <div class="search-box my-4">
         <input class="search-text" type="text" name="query" id="query" minlength="3" placeholder="Search recipes">
-        <button type="submit" class="search-btn"><i class="fas fa-search"></i></button>
+        <button type="submit" class="search-btn">
+        <i class="fas fa-search"></i>
+        </button>
     </div>
-</form>
-
-<div class="container">
-            <section class="section-1">
-                <div class="card-section">
-    {% for post in posts %}
-    <a  style="text-decoration: none; color:black;" href="{{ url_for('views.post', username=post.user_id, post_id=post._id)}}">     
-            <div class="card">
+    </form>
+    <div class="container">
+    <section class="section-1">
+        <div class="card-section">
+            {% for post in posts %} 
+            <a style="text-decoration: none; color:black;" href="{{ url_for('views.post', username=post.user_id, post_id=post._id)}}">
+                <div class="card">
                 <img src={{post.image_url}} alt="">
                 <div class="card-body d-flex flex-column h-100">
                     <h3 class="text-center">{{post.post_title}}</h3>
-
-<div class="rate">
-    {%if post.rating >= 5%}
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-    {%endif%}
-
-    {%if post.rating < 5 and post.rating >= 4 %}
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star"></span>
-    {%endif%}
-
-    {%if post.rating < 4 and post.rating >= 3 %}
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star"></span>
-        <span class="fa fa-star"></span>
-    {%endif%}
-
-    {%if post.rating < 3 and post.rating >= 2 %}
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star"></span>
-        <span class="fa fa-star"></span>
-        <span class="fa fa-star"></span>
-    {%endif%}
-
-    {%if post.rating < 2 and post.rating >= 1 %}
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star"></span>
-        <span class="fa fa-star"></span>
-        <span class="fa fa-star"></span>
-        <span class="fa fa-star"></span>
-    {%endif%}
-
-    {%if post.rating < 1 %}
-        <p><i class="justify-content-center">Not rated yet</i></p>
-    {%endif%}
-    
-</div>
-
-<br><br>
-
-<p>{{post.post_description | truncate(150) }}</p>
-{# <span>{{post.user_id}}</span> #}
-
-</a>
-    <div class="row mt-auto">
-        <div class="col d-flex justify-content-center">
-        <a href="{{ url_for('views.favourite', post_id=post._id)}}" 
-        class="btn btn-primary mt-auto mx-1">Favourites</a>
-
-        {%if creator == post.user_id%}
-            <a href="{{ url_for('views.edit_post', post_id=post._id) }}" class="btn btn-warning mt-auto mx-1">Update</a>
-            <a href="{{ url_for('views.delete_post', post_id=post._id) }}" class="btn btn-danger mt-auto mx-1">Delete</a>
-        {%endif%}
+                    <div class="rate">
+                        {%if post.rating >= 5%} <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span> {%endif%} {%if post.rating
+                        < 5 and post.rating>= 4 %} <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span> {%endif%} {%if post.rating
+                        < 4 and post.rating>= 3 %} <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span> {%endif%} {%if post.rating
+                        < 3 and post.rating>= 2 %} <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span> {%endif%} {%if post.rating
+                        < 2 and post.rating>= 1 %} <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span> {%endif%} {%if post.rating
+                        < 1 %} 
+                        <p>
+                            <i class="justify-content-center">Not rated yet</i>
+                        </p>
+                        {%endif%}
+                    </div>
+                    <br>
+                    <br>
+                    <p>{{post.post_description | truncate(150) }}</p>
+                    {# 
+                    <span>{{post.user_id}}</span> #}
+            </a>
+            <div class="row mt-auto">
+            <div class="col d-flex justify-content-center">
+            <a href="{{ url_for('views.favourite', post_id=post._id)}}" class="btn btn-primary mt-auto mx-1">Favourites</a> {%if creator == post.user_id%} <a href="{{ url_for('views.edit_post', post_id=post._id) }}" class="btn btn-warning mt-auto mx-1">Update</a>
+            <a href="{{ url_for('views.delete_post', post_id=post._id) }}" class="btn btn-danger mt-auto mx-1">Delete</a> {%endif%}
+            </div>
+            </div>
+            </div>
+            </div> {% endfor %} 
         </div>
-    </div>
-
-    </div>
-</div>
-    {% endfor %}
-</div>
     </section>
 </div>
-
-{% endblock  %}
+{% endblock %}

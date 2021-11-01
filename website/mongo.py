@@ -20,6 +20,7 @@ COLLECTION_POSTS = "posts"
 COLLECTION_RATINGS = "ratings"
 COLLECTION_FAVOURITE = "favourite"
 
+
 # function to check db connection
 def mongo_connect(url):
     # this will display a success message and return the db connection

@@ -1,12 +1,9 @@
 {% extends "base.html" %}
-
 <title>{% block title %}PROFILE{% endblock %}</title>
-
 {% block content %}
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <link rel="stylesheet" href={{url_for("static",filename="css/fav_ratings.css")}}>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="stylesheet" href={{url_for("static",filename="css/fav_ratings.css")}}>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="container profile-welcome-content">
     <div class="row">
         <div class="col-12 user-welcome-col">
@@ -15,161 +12,138 @@
             </div>
         </div>
     </div>
-</div>
-
-<div class="container">
-            <section class="section-1">
-                <div class="card-section">
-    {% for post in posts %}
-    <a  style="text-decoration: none; color:black;" href="{{ url_for('views.post', username=post.user_id, post_id=post._id)}}">   
-            <div class="card">
+    </div>
+    <div class="container">
+    <section class="section-1">
+        <div class="card-section">
+            {% for post in posts %}
+            <a  style="text-decoration: none; color:black;" href="{{ url_for('views.post', username=post.user_id, post_id=post._id)}}">
+                <div class="card">
                 <img src={{post.image_url}} alt="">
                 <div class="card-body d-flex flex-column h-100">
                     <h3 class="text-center">{{post.post_title}}</h3>
-<div class="rate">
-    {%if post.rating >= 5%}
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-    {%endif%}
-
-    {%if post.rating < 5 and post.rating >= 4 %}
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star"></span>
-    {%endif%}
-
-    {%if post.rating < 4 and post.rating >= 3 %}
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star"></span>
-        <span class="fa fa-star"></span>
-    {%endif%}
-
-    {%if post.rating < 3 and post.rating >= 2 %}
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star"></span>
-        <span class="fa fa-star"></span>
-        <span class="fa fa-star"></span>
-    {%endif%}
-
-    {%if post.rating < 2 and post.rating >= 1 %}
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star"></span>
-        <span class="fa fa-star"></span>
-        <span class="fa fa-star"></span>
-        <span class="fa fa-star"></span>
-    {%endif%}
-
-    {%if post.rating < 1 %}
-        <p><i>No rating yet</i></p>
-    {%endif%}
-    
-</div>
-<br><br>
-<p>{{post.post_description | truncate(150) }}</p>
-        <div class="row mt-auto">
-            <div class="col d-flex justify-content-center">
-                {%if creator == post.user_id%}
-                    <a href="{{ url_for('views.edit_post', post_id=post._id) }}" class="btn btn-warning mt-auto mx-1">Update</a>
-                    <a href="{{ url_for('views.delete_post', post_id=post._id) }}"
-                                class="btn btn-danger mt-auto mx-1">Delete</a>
-                {%endif%}
+                    <div class="rate">
+                        {%if post.rating >= 5%}
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        {%endif%}
+                        {%if post.rating < 5 and post.rating >= 4 %}
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        {%endif%}
+                        {%if post.rating < 4 and post.rating >= 3 %}
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        {%endif%}
+                        {%if post.rating < 3 and post.rating >= 2 %}
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        {%endif%}
+                        {%if post.rating < 2 and post.rating >= 1 %}
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        {%endif%}
+                        {%if post.rating < 1 %}
+                        <p><i>No rating yet</i></p>
+                        {%endif%}
+                    </div>
+                    <br><br>
+                    <p>{{post.post_description | truncate(150) }}</p>
+                    <div class="row mt-auto">
+                        <div class="col d-flex justify-content-center">
+                            {%if creator == post.user_id%}
+                                <a href="{{ url_for('views.edit_post', post_id=post._id) }}" class="btn btn-warning mt-auto mx-1">Update</a>
+                                <a href="{{ url_for('views.delete_post', post_id=post._id) }}"
+                                    class="btn btn-danger mt-auto mx-1">Delete</a>
+                            {%endif%}
+                        </div>
+                    </div>
+                </div>
             </div>
+            {% endfor %}
         </div>
+    </section>
     </div>
-</div>
-{% endfor %}
-</div></section>
-</div>
-
-
-<br><br>
-<h3 align="center">My Favourites</h3>
-<br>
-<div class="container">
-        <section class="section-1">
-                <div class="card-section">
-    {% for post in fav %}
-
-    {%if post.saved_by == creator %}
-
-            <div class="card">
-                <img src={{post.image_url}} alt="">
-                <div class="card-body">
+    <br><br>
+    <h3 align="center">My Favourites</h3>
+    <br>
+    <div class="container">
+    <section class="section-1">
+        <div class="card-section">
+            {% for post in fav %}
+                {%if post.saved_by == creator %}
+                <div class="card">
+                    <img src={{post.image_url}} alt="">
+                    <div class="card-body">
                     <h3 class="text-center">{{post.post_title}}</h3>
-    
-<div class="rate">
-    {%if post.rating >= 5%}
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    {%endif%}
-
-    {%if post.rating < 5 and post.rating >= 4 %}
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star"></span>
-    {%endif%}
-
-    {%if post.rating < 4 and post.rating >= 3 %}
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star"></span>
-    <span class="fa fa-star"></span>
-    {%endif%}
-
-    {%if post.rating < 3 and post.rating >= 2 %}
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star"></span>
-    <span class="fa fa-star"></span>
-    <span class="fa fa-star"></span>
-    {%endif%}
-
-    {%if post.rating < 2 and post.rating >= 1 %}
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star"></span>
-    <span class="fa fa-star"></span>
-    <span class="fa fa-star"></span>
-    <span class="fa fa-star"></span>
-    {%endif%}
-
-
-    {%if post.rating < 1 %}
-    <p><i>No rating yet</i></p>
-    {%endif%}
-    
-</div>
-
-<br><br>
-
-                <p>{{post.post_description | truncate(150) }}</p>
-                <div class="row mb-3">
-                <div class="col d-flex justify-content-center">
-                    <a href="{{ url_for('views.delete_fav_post', post_id=post._id) }}"
-                        class="btn btn-danger mx-1">Delete</a>
+                    <div class="rate">
+                        {%if post.rating >= 5%}
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        {%endif%}
+                        {%if post.rating < 5 and post.rating >= 4 %}
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        {%endif%}
+                        {%if post.rating < 4 and post.rating >= 3 %}
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        {%endif%}
+                        {%if post.rating < 3 and post.rating >= 2 %}
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        {%endif%}
+                        {%if post.rating < 2 and post.rating >= 1 %}
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        {%endif%}
+                        {%if post.rating < 1 %}
+                        <p><i>No rating yet</i></p>
+                        {%endif%}
+                    </div>
+                    <br><br>
+                    <p>{{post.post_description | truncate(150) }}</p>
+                    <div class="row mb-3">
+                        <div class="col d-flex justify-content-center">
+                            <a href="{{ url_for('views.delete_fav_post', post_id=post._id) }}"
+                                class="btn btn-danger mx-1">Delete</a>
+                        </div>
+                    </div>
+                    </div>
                 </div>
-            </div>
-
-                </div>
-            </div>
-
-            {%endif%}
-
-                {% endfor %}
-</div>
-</section>
+                {%endif%}
+            {% endfor %}
+        </div>
+    </section>
 </div>
 {% endblock %}

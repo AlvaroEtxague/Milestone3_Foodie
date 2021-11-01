@@ -26,6 +26,8 @@ posts_collection = db_connection[DB][COLLECTION_POSTS]
 users_collection = db_connection[DB][COLLECTION_USERS]
 ratings_collection = db_connection[DB][COLLECTION_RATINGS]
 favourite_collection = db_connection[DB][COLLECTION_FAVOURITE]
+
+
 # HOME VIEW
 @views.route("/")
 def home():
