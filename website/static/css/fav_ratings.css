@@ -1,0 +1,106 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    border: none;
+
+}
+html{
+    font-size: 62.5%;
+}
+
+.card-section{
+    display: flex;
+    /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
+    padding: 0rem 2rem;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 2rem;
+
+}
+.card{
+    width: 20%;
+    min-width: 25rem;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    border-radius: 0.5rem;
+    margin: 1rem 1rem;
+    transition: 0.5s;
+    padding: 0.5rem;
+}
+.card:hover
+{
+transition: 0.5s;
+transform: scale(1.02);
+}
+.card img{
+    width: 100%;
+    height: 20rem;
+}
+.card-body{
+    padding: 1rem 2rem;
+}
+.card-body h3{
+    font-size: 1.5rem;
+    height: 50px;
+}
+.card-body img{
+    width: 6rem;
+    height: 1.5rem;
+    margin: 0.5rem 0rem;
+}
+.checked{
+    color:orange;
+}
+.card-body p{
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+.card-body span{
+    font-size: 2rem;
+}
+
+.rate {
+    text-align: center;
+    /* float: left;
+    height: 46px;
+    padding: 0 10px; */
+}
+
+.rate:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+}
+
+.rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:30px;
+    color:#ccc;
+}
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+.rate > input:checked ~ label {
+    color: #ffc700;    
+}
+
+@media (max-width: 998px){
+    html {
+        font-size: 55%;
+    }
+}
+@media (max-width: 768px){
+    html {
+        font-size: 50%;
+    }
+}
+@media (max-width: 576px){
+    html {
+        font-size: 70%;
+    }
+}
