@@ -15,13 +15,10 @@ CLUSTER = os.environ.get("MONGO_URI")
 DB = os.environ.get("MONGO_DBNAME")
 
 # mapping the collections from env.py
-# COLLECTION_USERS = os.environ.get("COLLECTION_USERS")
-# COLLECTION_POSTS = os.environ.get("COLLECTION_POSTS")
 COLLECTION_USERS = "users"
 COLLECTION_POSTS = "posts"
 COLLECTION_RATINGS = "ratings"
 COLLECTION_FAVOURITE = "favourite"
-
 
 # function to check db connection
 def mongo_connect(url):
