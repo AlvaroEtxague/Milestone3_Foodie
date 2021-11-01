@@ -93,66 +93,69 @@ def favourite(post_id):
 # ADD RATING FOR POST
 @views.route("/rating/<post_id>", methods=["GET", "POST"])
 def rating(post_id):
-    creator = session["user"]
-    if request.method == "POST":
-        rate = request.form["rate"]
-        post = posts_collection.find_one({"_id": ObjectId(post_id)})
+    try:
+        creator = session["user"]
+        if request.method == "POST":
+            rate = request.form["rate"]
+            post = posts_collection.find_one({"_id": ObjectId(post_id)})
 
-        rating_data = {"rate": rate, "user_id": creator, "post_id": post_id}
+            rating_data = {"rate": rate, "user_id": creator, "post_id": post_id}
 
-        ratings_collection.insert_one(rating_data)
-        ratings = ratings_collection.find({"post_id": post_id})
-        rate_list = []
+            ratings_collection.insert_one(rating_data)
+            ratings = ratings_collection.find({"post_id": post_id})
+            rate_list = []
 
-        for data in ratings:
-            rate_list.append(data["rate"])
-            print(data["user_id"])
+            for data in ratings:
+                rate_list.append(data["rate"])
+                print(data["user_id"])
 
-        one_star = 0
-        two_star = 0
-        three_star = 0
-        four_star = 0
-        five_star = 0
-        total_number_of_rating = 0
+            one_star = 0
+            two_star = 0
+            three_star = 0
+            four_star = 0
+            five_star = 0
+            total_number_of_rating = 0
 
-        for number in rate_list:
-            print(number)
-            if int(number) == 1:
-                one_star = one_star + 1
-            elif int(number) == 2:
-                two_star = two_star + 1
-            elif int(number) == 3:
-                three_star = three_star + 1
-                print(three_star)
-            elif int(number) == 4:
-                four_star = four_star + 1
-            else:
-                five_star = five_star + 1
+            for number in rate_list:
+                print(number)
+                if int(number) == 1:
+                    one_star = one_star + 1
+                elif int(number) == 2:
+                    two_star = two_star + 1
+                elif int(number) == 3:
+                    three_star = three_star + 1
+                    print(three_star)
+                elif int(number) == 4:
+                    four_star = four_star + 1
+                else:
+                    five_star = five_star + 1
 
-            total_number_of_rating = total_number_of_rating + 1
+                total_number_of_rating = total_number_of_rating + 1
 
-        final_rating = (
-            1 * int(one_star)
-            + 2 * int(two_star)
-            + 3 * int(three_star)
-            + 4 * int(four_star)
-            + 5 * int(five_star)
-        ) / int(total_number_of_rating)
+            final_rating = (
+                1 * int(one_star)
+                + 2 * int(two_star)
+                + 3 * int(three_star)
+                + 4 * int(four_star)
+                + 5 * int(five_star)
+            ) / int(total_number_of_rating)
 
-        updated_post = {
-            "post_title": post["post_title"],
-            "post_description": post["post_description"],
-            "user_id": post["user_id"],
-            "image_url": post["image_url"],
-            "prep_time": post["prep_time"],
-            "rating": final_rating,
-        }
+            updated_post = {
+                "post_title": post["post_title"],
+                "post_description": post["post_description"],
+                "user_id": post["user_id"],
+                "image_url": post["image_url"],
+                "prep_time": post["prep_time"],
+                "rating": final_rating,
+            }
 
-        posts_collection.update({"_id": ObjectId(post_id)}, updated_post)
+            posts_collection.update({"_id": ObjectId(post_id)}, updated_post)
 
-        return redirect(
-            url_for("views.post", post_id=post_id, username=creator)
-        )
+            return redirect(
+                url_for("views.post", post_id=post_id, username=creator)
+            )
+    except:
+        return redirect(url_for("auth.login"))
 
 
 # USER PROFILE VIEW
