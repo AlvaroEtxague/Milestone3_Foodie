@@ -147,7 +147,6 @@ def rating(post_id):
                     two_star = two_star + 1
                 elif int(number) == 3:
                     three_star = three_star + 1
-                    print(three_star)
                 elif int(number) == 4:
                     four_star = four_star + 1
                 else:
@@ -173,14 +172,28 @@ def rating(post_id):
             }
 
             posts_collection.update({"_id": ObjectId(post_id)}, updated_post)
-
-            print("logged user")
             return redirect(
                 url_for("views.post", post_id=post_id, username=creator)
             )
     except:
-        print("not logged user")
-        return redirect(url_for("auth.login"))
+        try:
+            creator = session["user"]
+            post = posts_collection.find_one({"_id": ObjectId(post_id)})
+            print("logged user no rating")
+            flash(
+                "Please select a rating",
+                category="error",
+            )
+            return redirect(
+                url_for("views.post", post_id=post_id, username=creator)
+            )
+        except:
+            print("not logged user")
+            flash(
+                "Please login to select a rating",
+                category="error",
+            )
+            return redirect(url_for("auth.login"))
 
 
 # USER PROFILE VIEW
