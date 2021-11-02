@@ -42,21 +42,44 @@ def home():
 # INDIVIDUAL POST VIEW
 @views.route("/post/<username>/<post_id>", methods=["GET", "POST"])
 def post(post_id, username):
-    post = posts_collection.find_one({"_id": ObjectId(post_id)})
-    ratings = ratings_collection.find()
-    can_create = "yes"
-    rating = 0
-    for data in ratings:
-        if data["user_id"] == username and data["post_id"] == post_id:
-            can_create = "no"
-            rating = data["rate"]
-            break
+    try:
+        creator = session["user"]
+        username = users_collection.find_one({"username": session["user"]})[
+            "username"
+        ]
+        post = posts_collection.find_one({"_id": ObjectId(post_id)})
+        ratings = ratings_collection.find()
+        can_create = "yes"
+        rating = 0
+        if session["user"]:
+            for data in ratings:
+                if data["user_id"] == username and data["post_id"] == post_id:
+                    can_create = "no"
+                    rating = data["rate"]
+                    break
 
-    print(rating)
-    print(can_create)
-    return render_template(
-        "post.html", post=post, can_create=can_create, rating=int(rating)
-    )
+            print(rating)
+            print(can_create)
+            return render_template(
+                "post.html",
+                post=post,
+                can_create=can_create,
+                rating=int(rating),
+                creator=creator,
+            )
+    except:
+        creator = "None"
+        post = posts_collection.find_one({"_id": ObjectId(post_id)})
+        ratings = ratings_collection.find()
+        can_create = "yes"
+        rating = 0
+        return render_template(
+            "post.html",
+            post=post,
+            can_create=can_create,
+            rating=int(rating),
+            creator=creator,
+        )
 
 
 # ADD FAVORITE RECIPES
@@ -68,7 +91,7 @@ def favourite(post_id):
         to_check = favourite_collection.find_one({"post_id": post_id})
         post = posts_collection.find_one({"_id": ObjectId(post_id)})
         if to_check:
-            print("already present")
+            print("Already present")
             return redirect("/")
         else:
             new_post = {
@@ -151,10 +174,12 @@ def rating(post_id):
 
             posts_collection.update({"_id": ObjectId(post_id)}, updated_post)
 
+            print("logged user")
             return redirect(
                 url_for("views.post", post_id=post_id, username=creator)
             )
     except:
+        print("not logged user")
         return redirect(url_for("auth.login"))
 
 
