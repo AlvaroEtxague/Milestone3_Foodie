@@ -80,8 +80,11 @@
     </section>
     </div>
     <br><br>
-    <h3 align="center">My Favourites</h3>
-    <br>
+    {% if fav.count() > 0 %}
+        <h3 align="center">My Favourites</h3>
+        <br>
+    {% endif %}
+
     <div class="container">
     <section class="section-1">
         <div class="card-section">
